@@ -3,6 +3,8 @@
  * Behavior for simple usage of Sphinx search engine
  * http://www.sphinxsearch.com
  *
+ * Modified by Sebastien Beausoleil <https://github.com/sebthesun/Sphinx-CakePHP>
+ * @updated 06/2012
  * Updated by Nabeel Shahzad <https://github.com/nshahzad/Sphinx-CakePHP>
  * @updated 12/2011
  *
