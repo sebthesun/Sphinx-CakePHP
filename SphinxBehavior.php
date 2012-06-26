@@ -138,7 +138,17 @@ class SphinxBehavior extends ModelBehavior {
 			}
 
             $query['conditions'] = array($model->alias . '.'.$model->primaryKey => $ids);
-            $query['order'] = 'FIND_IN_SET('.$model->alias.'.'.$model->primaryKey.', \'' . implode(',', $ids) . '\')';
+            
+	    //Code for postgresql to replace the action of  the 'FIND_IN_SET' function use with MySql
+	    $i = 1;
+	    $sql_str = "CASE ".$model->alias.".".$model->primaryKey." ";
+	    foreach($ids as $ind => $id){
+	    
+		$sql_str .= " WHEN '".$id."' THEN ".$i;
+		$i++;
+	    }
+	    $sql_str .= ' ELSE '.$i.' END';
+	    $query['order'] = $sql_str;
 
         }
 
